@@ -6,7 +6,7 @@ This software project was made to . <br>
 - Own implementation of some data structures.
 ## Developers:
 - Julian Andres Rivera <br>
-- Name <br>
+- David Kim Jhun<br>
 - Miguel Andres Sarasti <br>
 ## Analysis and Design
 The documentation and design can be found here: [***Documentation***](docs) <br> <br>
