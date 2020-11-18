@@ -3,7 +3,11 @@ package structures;
 import java.util.List;
 
 public class AdjMatrixGraph<T> implements IGraph<T> {
-
+	private static final int DEF_CAP = 15;
+	private static final double GROWTH = 1.5;
+	private boolean isDirected;
+	private double[][] adjMatrixWeight;
+	
 	@Override
 	public void addVertex(T u) {
 		// TODO Auto-generated method stub
@@ -48,19 +52,16 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 
 	@Override
 	public double[][] weightMatrix() {
-		// TODO Auto-generated method stub
-		return null;
+		return adjMatrixWeight;
 	}
 
 	@Override
 	public boolean isDirected() {
-		// TODO Auto-generated method stub
-		return false;
+		return isDirected;
 	}
 
 	@Override
 	public boolean isWeighted() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

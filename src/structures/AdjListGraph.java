@@ -3,6 +3,7 @@ package structures;
 import java.util.List;
 
 public class AdjListGraph<T> implements IGraph<T> {
+	private boolean isDirected;
 
 	@Override
 	public void addVertex(T u) {
@@ -54,13 +55,11 @@ public class AdjListGraph<T> implements IGraph<T> {
 
 	@Override
 	public boolean isDirected() {
-		// TODO Auto-generated method stub
-		return false;
+		return isDirected;
 	}
 
 	@Override
 	public boolean isWeighted() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
