@@ -24,4 +24,8 @@ public interface IGraph<T> {
 	public boolean isWeighted();
 	
 	public List<Edge<T>> getEdges();
+	
+	public int getVertex();
+	
+	public int getIndexV(T vertex);
 }

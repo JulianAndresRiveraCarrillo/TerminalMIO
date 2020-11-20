@@ -10,6 +10,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 	private List<List<T>> adjLists;
 	private double[][] adjMatrixWeight;
 	
+	
 	public void initialize(int size) {
         adjLists = new ArrayList<List<T>>();
         IndexedVertices = new HashMap<>();
@@ -156,4 +157,15 @@ public class AdjListGraph<T> implements IGraph<T> {
 	public T search(int index) {
 		return IndexedVertices.get(index);
 	}
+
+	@Override
+	public int getVertex() {
+		return VerticesIndex.size();
+	}
+
+	@Override
+	public int getIndexV(T vertex) {
+		return VerticesIndex.get(vertex);
+	}	
+	
 }

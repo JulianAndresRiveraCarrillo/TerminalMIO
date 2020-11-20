@@ -186,4 +186,16 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	public T searchVertex(int index) {
 		return IndexedVertices.get(index);
 	}
+
+	@Override
+	public int getVertex() {
+		return VerticesIndex.size();
+	}
+
+	@Override
+	public int getIndexV(T vertex) {
+		return VerticesIndex.get(vertex);
+	}
+	
+	
 }
