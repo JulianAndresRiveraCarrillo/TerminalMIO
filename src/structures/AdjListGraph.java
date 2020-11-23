@@ -151,7 +151,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 	}
 	
 	public boolean search(T value) {
-		return VerticesIndex.containsValue(value);
+		return IndexedVertices.containsValue(value);
 	}
 	
 	public T search(int index) {
