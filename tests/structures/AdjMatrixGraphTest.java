@@ -52,6 +52,23 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
+	void deleteVertexTest() {
+		setUpStage2();
+		amg.removeVertex("Pueblo Paleta");
+		assertThrows(NullPointerException.class, () -> {amg.getIndexV("Pueblo Paleta");});
+	}
+	
+	@Test
+	void deleteEdgeTest() {
+		setUpStage3();
+		amg.removeEdge("Pueblo Paleta", "Ciudad Verde");
+		double[][] wm = amg.weightMatrix();
+		assertFalse(amg.areConnected("Pueblo Paleta", "Ciudad Verde"));
+		assertEquals(Double.POSITIVE_INFINITY, wm[0][1]);
+		assertEquals(Double.POSITIVE_INFINITY, wm[1][0]);
+	}
+	
+	@Test
 	void searchTest1() {
 		setUpStage1();
 		assertNull(amg.searchVertex(0));
