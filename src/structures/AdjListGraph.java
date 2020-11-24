@@ -124,9 +124,9 @@ public class AdjListGraph<T> implements IGraph<T> {
 	@Override
 	public double[][] weightMatrix() {
 		for(int i = 0; i < adjLists.size(); i++) {
-			for(int j = 0; j < adjLists.get(i).size(); j++) {
+			for(int j = 0; j < adjLists.size(); j++) {
 				if(i!=j) {
-					if(adjMatrixWeight[i][j] == 0) {
+					if(adjMatrixWeight[i][j] == 0.0) {
 						adjMatrixWeight[i][j] = Double.POSITIVE_INFINITY;
 					}
 				}
@@ -147,7 +147,15 @@ public class AdjListGraph<T> implements IGraph<T> {
 
 	@Override
 	public List<Edge<T>> getEdges() {
-		return null;
+		double[][] mat = weightMatrix();
+		ArrayList<Edge<T>> edges = new ArrayList<>();
+		for(int i = 0; i < VerticesIndex.size(); i++) {
+			List<T> l = adjLists.get(i);
+			for(int j = 0; j < l.size(); j++) {
+				edges.add(new Edge<T>(mat[i][j],IndexedVertices.get(i), l.get(j)));
+			}
+		}
+		return edges;
 	}
 	
 	public boolean search(T value) {

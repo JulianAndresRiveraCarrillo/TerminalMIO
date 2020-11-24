@@ -14,11 +14,12 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	private NavigableSet<Integer> freePositions;
 	
 	public void initialize(int size) {
-        size = 0;
+        this.size = 0;
         adjMatrix = new double[size][size];
         IndexedVertices = new HashMap<>();
         VerticesIndex = new HashMap<>();
         adjMatrixWeight = new double[size][size];
+        freePositions = new TreeSet<>();
 	}
 	
 	public AdjMatrixGraph(boolean dir) {
@@ -59,14 +60,16 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		Integer source = VerticesIndex.get(u);
 		Integer end = VerticesIndex.get(v);
 		if(source!=null && end!=null) {
+			int s = source;
+			int e = end;
 			if(!isDirected) {
-				adjMatrix[source][end] = 1;
-				adjMatrix[end][source] = 1;
-				adjMatrixWeight[source][end] = 1;
-				adjMatrixWeight[end][source] = 1;
+				adjMatrix[s][e] = 1;
+				adjMatrix[e][s] = 1;
+				adjMatrixWeight[s][e] = 1;
+				adjMatrixWeight[e][s] = 1;
 			}else {
-				adjMatrix[source][end] = 1;
-				adjMatrixWeight[source][end] = 1;
+				adjMatrix[s][e] = 1;
+				adjMatrixWeight[s][e] = 1;
 			}
 		}
 	}
@@ -76,14 +79,16 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		Integer source = VerticesIndex.get(u);
 		Integer end = VerticesIndex.get(v);
 		if(source!=null && end!=null) {
+			int s = source;
+			int e = end;
 			if(!isDirected) {
-				adjMatrix[source][end] = 1;
-				adjMatrix[end][source] = 1;
-				adjMatrixWeight[source][end] = w;
-				adjMatrixWeight[end][source] = w;
+				adjMatrix[s][e] = 1;
+				adjMatrix[e][s] = 1;
+				adjMatrixWeight[s][e] = w;
+				adjMatrixWeight[e][s] = w;
 			}else {
-				adjMatrix[source][end] = 1;
-				adjMatrixWeight[source][end] = w;
+				adjMatrix[s][e] = 1;
+				adjMatrixWeight[s][e] = w;
 			}
 		}
 	}

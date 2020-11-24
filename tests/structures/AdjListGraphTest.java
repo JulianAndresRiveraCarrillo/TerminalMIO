@@ -1,7 +1,6 @@
 package structures;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import structures.AdjListGraph;
 
 class AdjListGraphTest {
 	AdjListGraph<String> alg;
@@ -68,5 +67,27 @@ class AdjListGraphTest {
 	@Test
 	void weightMatrixTest() {
 		setUpStage3();
+		double[][] matrix = alg.weightMatrix();
+		assertEquals(8, matrix[0][1]);
+		assertEquals(8, matrix[1][0]);
+		assertEquals(15, matrix[1][2]);
+		assertEquals(15, matrix[2][1]);
+		assertEquals(Double.POSITIVE_INFINITY, matrix[0][2]);
+		assertEquals(Double.POSITIVE_INFINITY, matrix[2][0]);
+	}
+	
+	@Test
+	void getIndexVTest() {
+		setUpStage2();
+		assertEquals(0, alg.getIndexV("Pueblo Paleta"));
+		assertNotEquals(1, alg.getIndexV("Ciudad Plateada"));
+	}
+	
+	@Test
+	void getVertexTest() {
+		setUpStage2();
+		assertEquals(3, alg.getVertex());
+		alg.addVertex("Ciudad Celeste");
+		assertEquals(4, alg.getVertex());
 	}
 }
