@@ -115,8 +115,11 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			if(!isDirected) {
 				adjMatrix[source][end] = 0;
 				adjMatrix[end][source] = 0;
+				adjMatrixWeight[source][end] = 0;
+				adjMatrixWeight[end][source] = 0;
 			}else {
 				adjMatrix[source][end] = 0;
+				adjMatrixWeight[source][end] = 0;
 			}
 		}
 	}

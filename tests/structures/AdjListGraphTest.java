@@ -51,6 +51,23 @@ class AdjListGraphTest {
 	}
 	
 	@Test
+	void removeVertexTest() {
+		setUpStage2();
+		alg.removeVertex("Pueblo Paleta");
+		assertFalse(alg.search("Pueblo Paleta"));
+	}
+	
+	@Test
+	void removeEdgeTest() {
+		setUpStage3();
+		alg.removeEdge("Pueblo Paleta", "Ciudad Verde");
+		double [][] wm = alg.weightMatrix();
+		assertFalse(alg.areConnected("Pueblo Paleta", "Ciudad Verde"));
+		assertEquals(Double.POSITIVE_INFINITY, wm[0][1]);
+		assertEquals(Double.POSITIVE_INFINITY, wm[1][0]);
+	}
+	
+	@Test
 	void searchTest1() {
 		setUpStage1();
 		assertNull(alg.search(0));
