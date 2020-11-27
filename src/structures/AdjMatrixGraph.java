@@ -191,7 +191,11 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		return edges;
 	}
 	
-	public T searchVertex(int index) {
+	public boolean search(T value) {
+		return false;
+	}
+	
+	public T search(int index) {
 		return IndexedVertices.get(index);
 	}
 

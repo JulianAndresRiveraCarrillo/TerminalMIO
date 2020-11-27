@@ -31,7 +31,7 @@ class AdjMatrixGraphTest {
 	void addVertexTest() {
 		setUpStage1();
 		amg.addVertex("Pueblo Paleta");
-		assertEquals("Pueblo Paleta", amg.searchVertex(0));
+		assertEquals("Pueblo Paleta", amg.search(0));
 	}
 	
 	@Test
@@ -71,15 +71,15 @@ class AdjMatrixGraphTest {
 	@Test
 	void searchTest1() {
 		setUpStage1();
-		assertNull(amg.searchVertex(0));
+		assertNull(amg.search(0));
 	}
 	
 	@Test
 	void searchTest2() {
 		setUpStage2();
-		assertEquals("Pueblo Paleta", amg.searchVertex(0));
-		assertEquals("Ciudad Plateada", amg.searchVertex(2));
-		assertNull(amg.searchVertex(3));
+		assertEquals("Pueblo Paleta", amg.search(0));
+		assertEquals("Ciudad Plateada", amg.search(2));
+		assertNull(amg.search(3));
 	}
 	
 	@Test

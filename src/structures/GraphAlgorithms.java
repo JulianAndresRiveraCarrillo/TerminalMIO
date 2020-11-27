@@ -114,10 +114,11 @@ public class GraphAlgorithms<T> {
 
 	public static <T> double[][] floydWarshall(IGraph<T> graph){
 		double[][] matrix = graph.weightMatrix();
+		int size = graph.getVertex();
 		
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix.length; j++) {
-				for (int k = 0; k < matrix.length; k++) {
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				for (int k = 0; k < size; k++) {
 					
 					if ((matrix[j][i] + matrix[i][k]) < matrix[j][k]) {
 						matrix[j][k] = matrix[j][i] + matrix[i][k];

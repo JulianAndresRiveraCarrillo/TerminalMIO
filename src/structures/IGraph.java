@@ -23,6 +23,10 @@ public interface IGraph<T> {
 	
 	public boolean isWeighted();
 	
+	public boolean search(T value);
+	
+	public T search(int index);
+	
 	public List<Edge<T>> getEdges();
 	
 	public int getVertex();
