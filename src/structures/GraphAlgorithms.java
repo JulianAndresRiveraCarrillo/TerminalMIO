@@ -9,6 +9,17 @@ public class GraphAlgorithms<T> {
 	private static int[] path;
 	public static List<Integer> choice;
 
+	public static double[] getCost() {
+		return cost;
+	}
+	
+	public static int[] getPath() {
+		return path;
+	}
+
+	public static List<Integer> getChoice() {
+		return choice;
+	}
 	
 	public List<T> bfs(IGraph<T> graph, T source){
 		List<T> bfs = new ArrayList<>();
@@ -118,11 +129,12 @@ public class GraphAlgorithms<T> {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix.length; j++) {
 				for (int k = 0; k < matrix.length; k++) {
-					
+					/*
 					if ((matrix[j][i] + matrix[i][k]) < matrix[j][k]) {
 						matrix[j][k] = matrix[j][i] + matrix[i][k];
 					}
-					
+					*/
+					matrix[j][k] = Double.min(matrix[j][k], matrix[j][i] + matrix[i][k]);
 				}
 			}
 		}
@@ -184,4 +196,39 @@ public class GraphAlgorithms<T> {
 		return minLength;
 	
 	}
+	
+	public static <T> ArrayList<Edge<T>> kruskal(IGraph<T> graph){
+		
+		List<Edge<T>> result = new ArrayList<Edge<T>>(); 
+		int res = 0;
+		int edg = 0; 
+
+		List<Edge<T>> edges = (ArrayList<Edge<T>>) graph.getEdges();
+
+		Collections.sort(edges);
+
+		DisjointSet ds = new DisjointSet(graph.getVertex());
+
+		edg = 0;
+
+		while (res < graph.getVertex() - 1 && edg < edges.size()) {
+			
+			Edge<T> edge = edges.get(edg);
+			edg++;
+
+			int x = ds.find(graph.getIndexV(edge.getSource()));
+			int y = ds.find(graph.getIndexV(edge.getEnd()));
+
+			if (x != y) {
+				result.add(edge);
+				res++;
+				ds.union(x, y);
+			}
+			
+		}
+		return (ArrayList<Edge<T>>) result;
+	}
+
+	
+
 }
