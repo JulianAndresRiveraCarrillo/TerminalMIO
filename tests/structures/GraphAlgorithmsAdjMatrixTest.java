@@ -28,7 +28,6 @@ class GraphAlgorithmsAdjMatrixTest {
 		graph.addVertex("B");
 		graph.addVertex("C");
 		graph.addVertex("D");
-		graph.addVertex("E");
 		graph.addEdge("A", "B", 8);
 		graph.addEdge("A", "C", 5);
 		graph.addEdge("A", "D", 3);
@@ -143,5 +142,23 @@ class GraphAlgorithmsAdjMatrixTest {
 		assertEquals(0, cost[3]);
 		
 		assertEquals(3, GraphAlgorithms.getPath()[2]);
+	}
+	
+	@Test
+	void primTest1() {
+		setUpStage1();
+		assertEquals(19, GraphAlgorithms.prim("Pueblo Paleta", graph));
+		assertEquals(13, GraphAlgorithms.prim("Ciudad Verde", graph));
+		assertEquals(19, GraphAlgorithms.prim("Ciudad Celeste", graph));
+		assertEquals(19, GraphAlgorithms.prim("Ciudad Plateada", graph));
+	}
+	
+	@Test
+	void primTest2() {
+		setUpStage2();
+		assertEquals(10, GraphAlgorithms.prim("A", graph));
+		assertEquals(7, GraphAlgorithms.prim("B", graph));
+		assertEquals(10, GraphAlgorithms.prim("C", graph));
+		assertEquals(10, GraphAlgorithms.prim("D", graph));
 	}
 }
