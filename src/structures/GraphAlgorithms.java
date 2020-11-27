@@ -62,7 +62,7 @@ public class GraphAlgorithms<T> {
 		return dfs;
 	}
 	
-	public static<T> void dijkstra(T origin, IGraph<T> g, int c) {
+	public static <T> void dijkstra(T origin, IGraph<T> g, int c) {
 		double[][] weights = g.weightMatrix(); 
 		
 		int index = g.getIndexV(origin); 
@@ -112,4 +112,76 @@ public class GraphAlgorithms<T> {
 		return v;
 	}
 
+	public static <T> double[][] floydWarshall(IGraph<T> graph){
+		double[][] matrix = graph.weightMatrix();
+		
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix.length; j++) {
+				for (int k = 0; k < matrix.length; k++) {
+					
+					if ((matrix[j][i] + matrix[i][k]) < matrix[j][k]) {
+						matrix[j][k] = matrix[j][i] + matrix[i][k];
+					}
+					
+				}
+			}
+		}
+		return matrix;
+	}
+	
+	public static <T> int prim(T node, IGraph<T> graph){
+		double[][] matrix = graph.weightMatrix();
+		
+		int size = graph.getVertex();
+		int index = graph.getIndexV(node);
+		int minLength = 0;
+		int aux;
+		double min;
+		double[] cost = new double[size];
+		int[] closer = new int[size];
+		boolean[] B = new boolean[size];
+		
+		for (int i = 0; i < size; i++) {
+			B[i] = false;
+		}
+		
+		B[index] = true;
+		
+		for (int i = 0; i < size; i++) {
+			if (i != index) {
+				cost[i] = matrix[index][i];
+				closer[i] = 0;
+			}
+		}
+		
+		for (int i = 0; i < size; i++) {
+			if (i != index) {
+				min = cost[1];
+				aux = 1;
+				for (int j = 0; j < size; j++) {
+					if (j != index) {
+						if (cost[j] < min) {
+							min = cost[j];
+							aux = j;
+						}
+					}
+				}
+				minLength += min;
+				B[aux] = true;
+				cost[aux] = Integer.MAX_VALUE;
+				
+				for (int j = 0; j < size; j++) {
+					if (j != index) {
+						if (matrix[aux][j] < cost[j] && !B[j]) {
+							cost[j] = matrix[aux][j];
+							closer[j] = aux;
+						}
+					}
+				}
+			}
+		}
+		
+		return minLength;
+	
+	}
 }
