@@ -184,4 +184,20 @@ public class GraphAlgorithms<T> {
 		return minLength;
 	
 	}
+
+	public static double[] getCost() {
+		return cost;
+	}
+
+	public static boolean[] getF() {
+		return F;
+	}
+
+	public static int[] getPath() {
+		return path;
+	}
+
+	public static List<Integer> getChoice() {
+		return choice;
+	}
 }
