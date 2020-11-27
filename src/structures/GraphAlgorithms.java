@@ -184,11 +184,6 @@ public class GraphAlgorithms<T> {
 		return minLength;
 	
 	}
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-	
 	public static <T> ArrayList<Edge<T>> kruskal(IGraph<T> graph){
 		
 		List<Edge<T>> result = new ArrayList<Edge<T>>(); 
@@ -221,11 +216,6 @@ public class GraphAlgorithms<T> {
 		return (ArrayList<Edge<T>>) result;
 	}
 
-	
-
-=======
-=======
->>>>>>> main
 
 	public static double[] getCost() {
 		return cost;
@@ -242,9 +232,4 @@ public class GraphAlgorithms<T> {
 	public static List<Integer> getChoice() {
 		return choice;
 	}
-<<<<<<< HEAD
->>>>>>> main
->>>>>>> Stashed changes
-=======
->>>>>>> main
 }
