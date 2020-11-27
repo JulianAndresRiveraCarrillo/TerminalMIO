@@ -184,4 +184,61 @@ public class GraphAlgorithms<T> {
 		return minLength;
 	
 	}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	
+	public static <T> ArrayList<Edge<T>> kruskal(IGraph<T> graph){
+		
+		List<Edge<T>> result = new ArrayList<Edge<T>>(); 
+		int res = 0;
+		int edg = 0; 
+
+		List<Edge<T>> edges = (ArrayList<Edge<T>>) graph.getEdges();
+
+		Collections.sort(edges);
+
+		DisjointSet ds = new DisjointSet(graph.getVertex());
+
+		edg = 0;
+
+		while (res < graph.getVertex() - 1 && edg < edges.size()) {
+			
+			Edge<T> edge = edges.get(edg);
+			edg++;
+
+			int x = ds.find(graph.getIndexV(edge.getSource()));
+			int y = ds.find(graph.getIndexV(edge.getEnd()));
+
+			if (x != y) {
+				result.add(edge);
+				res++;
+				ds.union(x, y);
+			}
+			
+		}
+		return (ArrayList<Edge<T>>) result;
+	}
+
+	
+
+=======
+
+	public static double[] getCost() {
+		return cost;
+	}
+
+	public static boolean[] getF() {
+		return F;
+	}
+
+	public static int[] getPath() {
+		return path;
+	}
+
+	public static List<Integer> getChoice() {
+		return choice;
+	}
+>>>>>>> main
+>>>>>>> Stashed changes
 }
