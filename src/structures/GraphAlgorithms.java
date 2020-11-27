@@ -184,6 +184,7 @@ public class GraphAlgorithms<T> {
 		return minLength;
 	
 	}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
@@ -223,6 +224,8 @@ public class GraphAlgorithms<T> {
 	
 
 =======
+=======
+>>>>>>> main
 
 	public static double[] getCost() {
 		return cost;
@@ -239,6 +242,9 @@ public class GraphAlgorithms<T> {
 	public static List<Integer> getChoice() {
 		return choice;
 	}
+<<<<<<< HEAD
 >>>>>>> main
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
 }
