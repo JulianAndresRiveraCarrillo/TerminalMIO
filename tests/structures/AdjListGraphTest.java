@@ -2,6 +2,8 @@ package structures;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import data_structures.AdjListGraph;
+
 class AdjListGraphTest {
 	AdjListGraph<String> alg;
 	/** STAGES **/	

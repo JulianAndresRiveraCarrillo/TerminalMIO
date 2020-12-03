@@ -6,6 +6,11 @@ import java.util.*;
 
 import org.junit.jupiter.api.Test;
 
+import data_structures.AdjListGraph;
+import data_structures.Edge;
+import data_structures.GraphAlgorithms;
+import data_structures.IGraph;
+
 class GraphAlgorithmsAdjListTest {
 	GraphAlgorithms<String> g = new GraphAlgorithms<String>();
 	IGraph<String> graph;

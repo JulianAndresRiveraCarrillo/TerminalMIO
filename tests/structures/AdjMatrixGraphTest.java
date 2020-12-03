@@ -3,6 +3,8 @@ package structures;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import data_structures.AdjMatrixGraph;
+
 class AdjMatrixGraphTest {
 	AdjMatrixGraph<String> amg;
 	/** STAGES **/	

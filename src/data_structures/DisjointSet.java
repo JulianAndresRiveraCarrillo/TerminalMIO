@@ -1,4 +1,4 @@
-package structures;
+package data_structures;
 
 public class DisjointSet {
 

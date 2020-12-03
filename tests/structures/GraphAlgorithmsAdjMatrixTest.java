@@ -6,6 +6,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import data_structures.AdjMatrixGraph;
+import data_structures.GraphAlgorithms;
+import data_structures.IGraph;
+
 class GraphAlgorithmsAdjMatrixTest {
 	GraphAlgorithms<String> g = new GraphAlgorithms<String>();
 	IGraph<String> graph;

@@ -1,4 +1,4 @@
-package structures;
+package data_structures;
 
 public class Edge<T> implements Comparable<Edge<T>> {
 	private double weight;
