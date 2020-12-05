@@ -4,10 +4,17 @@ public class Estacion {
 
     private String nombre;
     private int capacidad_de_usuarios;
+    private String rutas;
 
     public Estacion( String nombre, int capacidad_de_usuarios){
         this.nombre = nombre;
         this.capacidad_de_usuarios = capacidad_de_usuarios;
+    }
+    
+    public Estacion( String nombre, int capacidad_de_usuarios, String rutas){
+        this.nombre = nombre;
+        this.capacidad_de_usuarios = capacidad_de_usuarios;
+        this.rutas = rutas;
     }
 
     public String getNombre() {
@@ -25,4 +32,12 @@ public class Estacion {
     public void setCapacidad_de_usuarios(int capacidad_de_usuarios) {
         this.capacidad_de_usuarios = capacidad_de_usuarios;
     }
+
+	public String getRutas() {
+		return rutas;
+	}
+
+	public void setRutas(String rutas) {
+		this.rutas = rutas;
+	}
 }
