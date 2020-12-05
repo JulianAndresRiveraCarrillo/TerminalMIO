@@ -7,10 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Administrador;
 
 import java.io.IOException;
 
 public class ControladorPrincipal_1 {
+
+    public static Administrador admin = new Administrador();
 
     @FXML
     public void ventanaMostrarInformacion(ActionEvent actionEvent) throws IOException {
