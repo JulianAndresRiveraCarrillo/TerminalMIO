@@ -1,4 +1,4 @@
-package ui;
+package gui;
 
 import java.io.IOException;
 
@@ -13,6 +13,18 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class PrincipalController {
+	
+	private AddController addControl;
+	private DeleteController deleteControl;
+	private SearchController searchControl;
+	private RouteController routeControl;
+	
+	public PrincipalController() {
+		addControl = new AddController();
+		deleteControl = new DeleteController();
+		searchControl = new SearchController();
+		routeControl = new RouteController();
+	}
 	
 	@FXML
 	void OpenInfo(ActionEvent event) {
@@ -38,7 +50,7 @@ public class PrincipalController {
 	void OpenAdd(ActionEvent event) {
 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("Agregar.fxml"));
 		
-		fxml.setController(this);
+		fxml.setController(addControl);
 		
 		try {
 			Parent root = fxml.load();
@@ -58,7 +70,7 @@ public class PrincipalController {
 	void OpenConnect(ActionEvent event) {
 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("Conectar.fxml"));
 		
-		fxml.setController(this);
+		fxml.setController(addControl);
 		
 		try {
 			Parent root = fxml.load();
@@ -78,7 +90,7 @@ public class PrincipalController {
 	void OpenDelete(ActionEvent event) {
 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("Eliminar.fxml"));
 		
-		fxml.setController(this);
+		fxml.setController(deleteControl);
 		
 		try {
 			Parent root = fxml.load();
@@ -100,7 +112,7 @@ public class PrincipalController {
 	void OpenSearch(ActionEvent event) {
 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("Buscar.fxml"));
 		
-		fxml.setController(this);
+		fxml.setController(searchControl);
 		
 		try {
 			Parent root = fxml.load();
@@ -122,7 +134,7 @@ public class PrincipalController {
 	void OpenRoute(ActionEvent event) {
 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("Rutas.fxml"));
 		
-		fxml.setController(this);
+		fxml.setController(routeControl);
 		
 		try {
 			Parent root = fxml.load();
