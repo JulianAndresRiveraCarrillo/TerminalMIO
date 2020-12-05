@@ -42,11 +42,9 @@ public class PrincipalController {
 
 	@FXML
 	void OpenAdd(ActionEvent event) throws IOException{
-		FXMLLoader fxml = new FXMLLoader(getClass().getResource("/gui/agregar.fxml"));
-		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/agregar.fxml"));
 		//fxml.setController(addControl);
-
-		Parent root = fxml.load();
+		Parent root = loader.load();
 		Scene sc = new Scene(root);
 		Stage st = new Stage();
 		st.setScene(sc);
