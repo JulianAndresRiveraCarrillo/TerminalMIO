@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-bg" stylesheets="@../resources/Background2.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <HBox alignment="CENTER" prefHeight="85.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Eliminar">
+            <Button mnemonicParsing="false" onAction="#delete" text="Eliminar">
                <font>
                   <Font name="Times New Roman Bold Italic" size="18.0" />
                </font>
@@ -42,7 +41,7 @@
                         <Font name="Times New Roman Bold Italic" size="32.0" />
                      </font>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="nameTF" />
                </children>
             </HBox>
          </children>

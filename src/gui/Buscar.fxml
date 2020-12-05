@@ -19,9 +19,9 @@
                <items>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="183.0" />
+                        <TextField fx:id="searchTF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="183.0" />
                         <Pane prefHeight="44.0" prefWidth="218.0" />
-                        <Button mnemonicParsing="false" text="Buscar">
+                        <Button mnemonicParsing="false" onAction="#search" text="Buscar">
                            <font>
                               <Font name="Times New Roman Bold Italic" size="18.0" />
                            </font>

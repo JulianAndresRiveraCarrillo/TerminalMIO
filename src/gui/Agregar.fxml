@@ -30,7 +30,27 @@
                         <Font name="Times New Roman Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="nameTF" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="82.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Capacidad: " textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="capacityTF" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="132.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Rutas: " textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="routeTF" />
                </children>
             </HBox>
          </children>
@@ -39,7 +59,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Agregar">
+            <Button mnemonicParsing="false" onAction="#add" text="Agregar">
                <font>
                   <Font name="Times New Roman Bold Italic" size="18.0" />
                </font>
