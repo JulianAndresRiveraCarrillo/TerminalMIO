@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddController {
+public class ControladorAgregar {
 
 	//Add GUI
 	@FXML

@@ -5,11 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-bg" stylesheets="@../resources/Background2.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-bg" stylesheets="@../resources/Background2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorRutas">
    <top>
       <VBox alignment="CENTER" prefHeight="95.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -48,17 +47,21 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#route" text="Estimar Ruta">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="18.0" />
+                  <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Pane prefHeight="100.0" prefWidth="91.0" />
             <Button layoutX="284.0" layoutY="48.0" mnemonicParsing="false" onAction="#routeComplete" text="Ruta Completa">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="18.0" />
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#mostrarVentanaPrincipal" text="Menu principal">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
          </children>

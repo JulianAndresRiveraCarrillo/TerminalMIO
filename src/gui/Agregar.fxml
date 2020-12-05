@@ -9,10 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" styleClass="main-bg" stylesheets="@../resources/Background2.css"
-            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="controller.AddController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-bg" stylesheets="@../resources/Background2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorAgregar">
    <top>
       <VBox alignment="CENTER" prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -65,12 +62,12 @@ fx:controller="controller.AddController">
          <children>
             <Button mnemonicParsing="false" onAction="#add" text="Agregar">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="18.0" />
+                  <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#regresarVentana" text="Regresar " textAlignment="CENTER">
                <font>
-                  <Font name="Arial Bold" size="17.0" />
+                  <Font name="Arial Bold" size="12.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" />
