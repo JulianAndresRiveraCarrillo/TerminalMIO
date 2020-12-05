@@ -33,7 +33,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	}
 	
 	@Override
-	public void addVertex(T u) {
+	public boolean addVertex(T u) {
 		int index;
 		if(VerticesIndex.get(u)==null) {
 			if(freePositions.isEmpty()) {
@@ -52,6 +52,9 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			}
 			IndexedVertices.put(index, u);
 			VerticesIndex.put(u, index);
+			return true;
+		}else {
+			return false;
 		}
 	}
 

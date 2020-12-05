@@ -3,7 +3,7 @@ package data_structures;
 import java.util.List;
 
 public interface IGraph<T> {
-	public void addVertex(T u);
+	public boolean addVertex(T u);
 	
 	public void addEdge(T u, T v);
 	

@@ -29,10 +29,17 @@ class AdjListGraphTest {
 	
 	/** TESTS **/
 	@Test
-	void addVertexTest() {
+	void addVertexTest1() {
 		setUpStage1();
 		alg.addVertex("Pueblo Paleta");
 		assertEquals("Pueblo Paleta", alg.search(0));
+	}
+	
+	@Test
+	void addVertexTest2() {
+		setUpStage2();
+		boolean added = alg.addVertex("Pueblo Paleta");
+		assertEquals(false, added);
 	}
 	
 	@Test
