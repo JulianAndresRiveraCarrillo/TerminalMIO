@@ -58,7 +58,7 @@ public class AddController {
 
 	@FXML
 	public void regresarVentana(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/principal.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/principal_1.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
