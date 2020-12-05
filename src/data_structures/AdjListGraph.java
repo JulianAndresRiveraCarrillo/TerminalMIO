@@ -29,13 +29,16 @@ public class AdjListGraph<T> implements IGraph<T> {
 	}
 
 	@Override
-	public void addVertex(T u) {
+	public boolean addVertex(T u) {
 		if(!search(u)) {
 			List<T> vertexList = new ArrayList<T>();
 			int index = adjLists.size();
 			IndexedVertices.put(index, u);
 			VerticesIndex.put(u, index);
 			adjLists.add(vertexList);
+			return true;
+		}else {
+			return false;
 		}
 	}
 

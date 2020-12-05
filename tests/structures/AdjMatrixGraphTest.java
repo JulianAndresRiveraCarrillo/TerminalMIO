@@ -30,10 +30,17 @@ class AdjMatrixGraphTest {
 	
 	/** TESTS **/
 	@Test
-	void addVertexTest() {
+	void addVertexTest1() {
 		setUpStage1();
 		amg.addVertex("Pueblo Paleta");
 		assertEquals("Pueblo Paleta", amg.search(0));
+	}
+	
+	@Test
+	void addVertexTest2() {
+		setUpStage2();
+		boolean added = amg.addVertex("Pueblo Paleta");
+		assertEquals(false, added);
 	}
 	
 	@Test
