@@ -171,13 +171,6 @@ class GraphAlgorithmsAdjListTest {
 	void floydTest() {
 		setUpStage2();
 		double[][] m = GraphAlgorithms.floydWarshall(graph);
-		/*for(int i = 0; i < m.length; i++) {
-			for(int j = 0; j < m[0].length; j++) {
-				System.out.print(m[i][j]+" ");
-			}
-			System.out.println("");
-				
-		}*/
 		assertEquals(8, m[1][0]);
 		assertEquals(8, m[0][1]);
 		assertEquals(4, m[2][0]);
@@ -200,13 +193,47 @@ class GraphAlgorithmsAdjListTest {
 		Edge<String> e = a.get(0);
 		assertEquals(e.getSource(), graph.search(graph.getIndexV("Pueblo Paleta")));
 		assertEquals(e.getEnd(), graph.search(graph.getIndexV("Ciudad Verde")));
-		assertEquals(e.getWeight(), 0);
+		assertEquals(0, e.getWeight());
 		totalW = e.getWeight();
 		
 		e = a.get(1);
 		assertEquals(e.getSource(), graph.search(graph.getIndexV("Ciudad Verde")));
 		assertEquals(e.getEnd(), graph.search(graph.getIndexV("Ciudad Plateada")));
-		assertEquals(e.getWeight(), 0);
+		assertEquals(0, e.getWeight());
+		totalW += e.getWeight();
+		
+		e = a.get(2);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("Ciudad Celeste")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("Pueblo Paleta")));
+		assertEquals(5, e.getWeight());
+		totalW += e.getWeight();
+		
+		assertEquals(5, totalW);
+	}
+	
+	@Test
+	void kruskalTest2() {
+		setUpStage2();
+		ArrayList<Edge<String>> a = GraphAlgorithms.kruskal(graph);
+		double totalW = 0;
+		Edge<String> e = a.get(0);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("A")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("B")));
+		assertEquals(0, e.getWeight());
 		totalW = e.getWeight();
+		
+		e = a.get(1);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("B")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("D")));
+		assertEquals(0, e.getWeight());
+		totalW += e.getWeight();
+		
+		e = a.get(2);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("D")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("C")));
+		assertEquals(1, e.getWeight());
+		totalW += e.getWeight();
+		
+		assertEquals(1, totalW);
 	}
 }

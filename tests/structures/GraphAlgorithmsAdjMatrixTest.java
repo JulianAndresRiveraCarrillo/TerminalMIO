@@ -2,11 +2,13 @@ package structures;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import data_structures.AdjMatrixGraph;
+import data_structures.Edge;
 import data_structures.GraphAlgorithms;
 import data_structures.IGraph;
 
@@ -164,5 +166,75 @@ class GraphAlgorithmsAdjMatrixTest {
 		assertEquals(7, GraphAlgorithms.prim("B", graph));
 		assertEquals(10, GraphAlgorithms.prim("C", graph));
 		assertEquals(10, GraphAlgorithms.prim("D", graph));
+	}
+	
+	@Test
+	void floydTest() {
+		setUpStage2();
+		double[][] m = GraphAlgorithms.floydWarshall(graph);
+		assertEquals(8, m[1][0]);
+		assertEquals(8, m[0][1]);
+		assertEquals(4, m[2][0]);
+		assertEquals(4, m[0][2]);
+		assertEquals(3, m[3][0]);
+		assertEquals(3, m[0][3]);
+		assertEquals(8, m[1][0]);
+		assertEquals(8, m[0][1]);
+		assertEquals(4, m[2][0]);
+		assertEquals(4, m[0][2]);
+		assertEquals(3, m[3][0]);
+		assertEquals(3, m[0][3]);
+	}
+	
+	@Test
+	void kruskalTest1() {
+		setUpStage1();
+		ArrayList<Edge<String>> a = GraphAlgorithms.kruskal(graph);
+		double totalW = 0;
+		Edge<String> e = a.get(0);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("Pueblo Paleta")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("Ciudad Celeste")));
+		assertEquals(5, e.getWeight());
+		totalW = e.getWeight();
+		
+		e = a.get(1);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("Ciudad Plateada")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("Ciudad Celeste")));
+		assertEquals(6, e.getWeight());
+		totalW += e.getWeight();
+		
+		e = a.get(2);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("Pueblo Paleta")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("Ciudad Verde")));
+		assertEquals(8, e.getWeight());
+		totalW += e.getWeight();
+		
+		assertEquals(19, totalW);
+	}
+	
+	@Test
+	void kruskalTest2() {
+		setUpStage2();
+		ArrayList<Edge<String>> a = GraphAlgorithms.kruskal(graph);
+		double totalW = 0;
+		Edge<String> e = a.get(0);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("C")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("D")));
+		assertEquals(1, e.getWeight());
+		totalW = e.getWeight();
+		
+		e = a.get(1);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("A")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("D")));
+		assertEquals(3, e.getWeight());
+		totalW += e.getWeight();
+		
+		e = a.get(2);
+		assertEquals(e.getSource(), graph.search(graph.getIndexV("B")));
+		assertEquals(e.getEnd(), graph.search(graph.getIndexV("D")));
+		assertEquals(6, e.getWeight());
+		totalW += e.getWeight();
+		
+		assertEquals(10, totalW);
 	}
 }
