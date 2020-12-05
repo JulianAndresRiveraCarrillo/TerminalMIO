@@ -14,6 +14,8 @@ import model.Administrador;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 public class ControladorAgregar {
 	
 	private Administrador admin = new Administrador();
@@ -28,18 +30,37 @@ public class ControladorAgregar {
 	private TextField capacityTF;
 
 	@FXML
-	private TextField routeTF;
-	
-	@FXML
     void add(ActionEvent event) {
-		String name = nameTF.getText();
-		int capacity = Integer.parseInt(capacityTF.getText());
+		String name = " ";
+		int capacity = 0;
 		
-		admin.añadirEstacion(name, capacity);
+		try {
+			
+			if ((nameTF.getText().length() == 0)) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Verifica el nombre");
+				alert.setContentText("El campo de texto esta vacio");
+				alert.showAndWait();
+			}else {
+				name = nameTF.getText();
+				capacity = Integer.parseInt(capacityTF.getText());
+				
+				admin.añadirEstacion(name, capacity);
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText("Se ha agregado correctamente");
+				alert.showAndWait();
+			}
+			
 		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("Se ha agregado correctamente");
-		alert.showAndWait();
+		} catch (NumberFormatException nfe) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Verifica la Capacidad");
+			alert.setContentText("Solo se permiten numeros enteros en el campo de texto");
+			alert.showAndWait();
+		}
+		
+		
     }
 
 	@FXML
