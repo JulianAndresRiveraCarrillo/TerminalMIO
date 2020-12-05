@@ -10,10 +10,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import model.Administrador;
 
 import java.io.IOException;
 
 public class ControladorAgregar {
+	
+	private Administrador admin = new Administrador();
+	
+	//===================================================
 
 	//Add GUI
 	@FXML
@@ -24,37 +29,18 @@ public class ControladorAgregar {
 
 	@FXML
 	private TextField routeTF;
-	 
-	//Connect GUI
-	@FXML
-	private TextField firstTF;
-
-	@FXML
-	private TextField lastTF;
-	
-	//=========================================================
 	
 	@FXML
     void add(ActionEvent event) {
 		String name = nameTF.getText();
 		int capacity = Integer.parseInt(capacityTF.getText());
-		String route = routeTF.getText();
+		
+		admin.añadirEstacion(name, capacity);
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("Se ha agregado correctamente");
 		alert.showAndWait();
     }
-
-	@FXML
-    void connect(ActionEvent event) {
-		String first = firstTF.getText();
-		String last = lastTF.getText();
-		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("Se han conectado correctamente");
-		alert.setContentText(first + " conectado con " + last); 
-		alert.showAndWait();
-	}
 
 	@FXML
 	public void regresarVentana(ActionEvent event) throws IOException {
