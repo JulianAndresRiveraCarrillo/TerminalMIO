@@ -8,22 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-bg" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="OPCIONES">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <Menu mnemonicParsing="false" text="Agregar">
+                    <items>
+                    <MenuItem mnemonicParsing="false" onAction="#OpenAdd" text="Agregar Estacion" />
+                      <MenuItem mnemonicParsing="false" onAction="#OpenConnect" text="Conexion Estaciones" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#OpenDelete" text="Eliminar Estacion" />
+                  <MenuItem mnemonicParsing="false" onAction="#OpenSearch" text="Buscar Estacion" />
+                  <MenuItem mnemonicParsing="false" onAction="#OpenRoute" text="Estimar Ruta " />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="AYUDA">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#OpenInfo" text="Informacion" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="MAS">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>

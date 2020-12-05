@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	PrincipalController controller;
+	PrincipalController controller = new PrincipalController();;
 	
 	public static void main(String[] args) {
 		launch(args);
