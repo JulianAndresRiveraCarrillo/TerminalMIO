@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	PrincipalController controller = new PrincipalController();;
+	//PrincipalController controller = new PrincipalController();;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -16,13 +16,11 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader fxml = new FXMLLoader(getClass().getResource("Principal.fxml"));
-		
-		fxml.setController(controller);
-		
+		FXMLLoader fxml = new FXMLLoader(getClass().getResource("/gui/principal.fxml"));
+		//fxml.setController(controller);
 		Parent root = fxml.load();
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("BIENVENIDO...!");
+		primaryStage.setTitle("Menu principal");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
