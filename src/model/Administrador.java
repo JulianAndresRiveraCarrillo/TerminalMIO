@@ -36,7 +36,6 @@ public class Administrador {
 	}
 	*/
 	
-	public void añadirConexion(String estacion1, String estacion2) {
-		
+	public void añadirConexion(String estacion1, String estacion2, double distancia) {
 	}
 }

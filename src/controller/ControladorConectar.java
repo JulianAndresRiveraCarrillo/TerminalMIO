@@ -10,10 +10,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import model.Administrador;
 
 import java.io.IOException;
 
+import excepciones.EstacionNoEncontradaException;
+
 public class ControladorConectar {
+	
+	Administrador admin = new Administrador();
 	
 	@FXML
 	private TextField firstTF;
@@ -26,13 +31,42 @@ public class ControladorConectar {
 	
 	@FXML
     void connect(ActionEvent event) {
-		String first = firstTF.getText();
-		String last = lastTF.getText();
+		String first = " ";
+		String last = " ";
+		int distance = 0;
 		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("Se han conectado correctamente");
-		alert.setContentText(first + " conectado con " + last); 
-		alert.showAndWait();
+		try {
+			if ((firstTF.getText().length() == 0) && (lastTF.getText().length() == 0)) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Verifica las entradas");
+				alert.setContentText("Los campos de texto estan vacios");
+				alert.showAndWait();
+			}else {
+				first = firstTF.getText();
+				last = lastTF.getText();
+				distance = Integer.parseInt(distanceTF.getText());
+			}
+			
+			if(true) {
+				throw new EstacionNoEncontradaException();
+			}
+			
+			admin.añadirConexion(first, last, distance);
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Se han conectado correctamente");
+			alert.setContentText(first.toUpperCase() + " conectado con " + last.toUpperCase()); 
+			alert.showAndWait();
+		} catch (NumberFormatException nf) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Verifica la distancia");
+			alert.setContentText("Solo se permiten numeros enteros en el campo de texto");
+			alert.showAndWait();
+		} catch (EstacionNoEncontradaException en) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(en.getMessage());
+			alert.showAndWait();
+		}
 	}
 
     @FXML

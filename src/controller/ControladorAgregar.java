@@ -57,14 +57,14 @@ public class ControladorAgregar {
 			}
 			
 		
-		} catch (NumberFormatException nfe) {
+		} catch (NumberFormatException nf) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Verifica la Capacidad");
 			alert.setContentText("Solo se permiten numeros enteros en el campo de texto");
 			alert.showAndWait();
-		} catch (EstacionRepetidaException ere) {
+		} catch (EstacionRepetidaException er) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText(ere.getMessage());
+			alert.setHeaderText(er.getMessage());
 			alert.showAndWait();
 		}
 		
