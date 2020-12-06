@@ -27,6 +27,12 @@ public class ControladorEliminar {
 		alert.showAndWait();
 	}
 
+	public static void alert() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText("Primero debe eliminar la conexion");
+		alert.setContentText("Primero debes desconectar del sistema de transporte la estacion a eliminar");
+		alert.showAndWait();
+	}
 	@FXML
 	public void mostrarVentanaPrincipal(ActionEvent actionEvent) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/principal_1.fxml"));

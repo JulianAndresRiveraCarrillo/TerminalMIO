@@ -52,6 +52,7 @@ public class ControladorPrincipal_1 {
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        ControladorEliminar.alert();
         stage.show();
     }
 

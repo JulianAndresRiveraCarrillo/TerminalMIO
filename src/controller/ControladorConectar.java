@@ -66,6 +66,15 @@ public class ControladorConectar {
 	
 	@FXML
     void disconnect(ActionEvent event) {
+		String first = firstTF.getText();
+		String last = lastTF.getText();
+		
+		if ((first.length() == 0) && (last.length() == 0)) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Verifica las entradas");
+			alert.setContentText("Los campos de texto estan vacios");
+			alert.showAndWait();
+		}
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("Se ha eliminado la estacion correctamente");
 		alert.showAndWait();
