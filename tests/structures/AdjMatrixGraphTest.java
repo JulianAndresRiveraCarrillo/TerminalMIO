@@ -6,7 +6,7 @@ import data_structures.AdjMatrixGraph;
 
 
 class AdjMatrixGraphTest {
-	AdjMatrixGraph<String> amg;
+	private AdjMatrixGraph<String> amg;
 	/** STAGES **/	
 	public void setUpStage1() {
 		amg = new AdjMatrixGraph<String>(false);
@@ -31,21 +31,21 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
-	void addVertexTest1() {
+	public void addVertexTest1() {
 		setUpStage1();
 		amg.addVertex("Pueblo Paleta");
 		assertEquals("Pueblo Paleta", amg.search(0));
 	}
 	
 	@Test
-	void addVertexTest2() {
+	public void addVertexTest2() {
 		setUpStage2();
 		boolean added = amg.addVertex("Pueblo Paleta");
 		assertEquals(false, added);
 	}
 	
 	@Test
-	void addEdgeTest1() {
+	public void addEdgeTest1() {
 		setUpStage2();
 		amg.addEdge("Pueblo Paleta", "Ciudad Verde", 8);
 		amg.addEdge("Ciudad Verde", "Ciudad Plateada", 15);
@@ -54,7 +54,7 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
-	void addEdgeTest2() {
+	public void addEdgeTest2() {
 		setUpStage2();
 		amg.addEdge("Pueblo Paleta", "Ciudad Verde", 8);
 		assertTrue(amg.areConnected("Pueblo Paleta", "Ciudad Verde"));
@@ -62,14 +62,14 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
-	void deleteVertexTest() {
+	public void deleteVertexTest() {
 		setUpStage2();
 		amg.removeVertex("Pueblo Paleta");
 		assertThrows(NullPointerException.class, () -> {amg.getIndexV("Pueblo Paleta");});
 	}
 	
 	@Test
-	void deleteEdgeTest() {
+	public void deleteEdgeTest() {
 		setUpStage3();
 		amg.removeEdge("Pueblo Paleta", "Ciudad Verde");
 		double[][] wm = amg.weightMatrix();
@@ -79,13 +79,13 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
-	void searchTest1() {
+	public void searchTest1() {
 		setUpStage1();
 		assertNull(amg.search(0));
 	}
 	
 	@Test
-	void searchTest2() {
+	public void searchTest2() {
 		setUpStage2();
 		assertEquals("Pueblo Paleta", amg.search(0));
 		assertEquals("Ciudad Plateada", amg.search(2));
@@ -93,7 +93,7 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
-	void weightMatrixTest() {
+	public void weightMatrixTest() {
 		setUpStage3();
 		double[][] matrix = amg.weightMatrix();
 		assertEquals(8, matrix[0][1]);
@@ -105,14 +105,14 @@ class AdjMatrixGraphTest {
 	}
 	
 	@Test
-	void getIndexTest() {
+	public void getIndexTest() {
 		setUpStage2();
 		assertEquals(0, amg.getIndexV("Pueblo Paleta"));
 		assertNotEquals(1, amg.getIndexV("Ciudad Plateada"));
 	}
 	
 	@Test
-	void getVertexTest() {
+	public void getVertexTest() {
 		setUpStage2();
 		assertEquals(3, amg.getVertex());
 		amg.addVertex("Ciudad Celeste");
