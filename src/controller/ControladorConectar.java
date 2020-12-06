@@ -69,15 +69,25 @@ public class ControladorConectar {
 		String first = firstTF.getText();
 		String last = lastTF.getText();
 		
-		if ((first.length() == 0) && (last.length() == 0)) {
+		try {
+			if ((first.length() == 0) && (last.length() == 0)) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Verifica las entradas");
+				alert.setContentText("Los campos de texto estan vacios");
+				alert.showAndWait();
+			}else {
+				if (ControladorPrincipal_1.admin.eliminarConexion(first, last) == false) {
+					throw new EstacionNoEncontradaException();
+				}
+			}
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Se ha desconectado la estacion correctamente");
+			alert.showAndWait();
+		} catch (EstacionNoEncontradaException en) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("Verifica las entradas");
-			alert.setContentText("Los campos de texto estan vacios");
+			alert.setHeaderText(en.getMessage());
 			alert.showAndWait();
 		}
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("Se ha eliminado la estacion correctamente");
-		alert.showAndWait();
 	}
 
     @FXML

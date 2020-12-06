@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import excepciones.EstacionNoEncontradaException;
+
 public class ControladorEliminar {
 
 	@FXML
@@ -22,9 +24,25 @@ public class ControladorEliminar {
 	void delete(ActionEvent event) {
 		String temp = nameTF.getText();
 		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("Se ha eliminado correctamente");
-		alert.showAndWait();
+		try {
+			if (temp.length() != 0) {
+				if (ControladorPrincipal_1.admin.eliminarEstacion(temp) == false) {
+					throw new EstacionNoEncontradaException();
+				}
+			}else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Verifica la entrada");
+				alert.setContentText("El campo de texto vacio");
+				alert.showAndWait();
+			}
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Se ha eliminado correctamente");
+			alert.showAndWait();
+		} catch (EstacionNoEncontradaException en) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(en.getMessage());
+			alert.showAndWait();
+		}
 	}
 
 	public static void alert() {
