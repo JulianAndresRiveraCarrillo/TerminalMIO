@@ -10,15 +10,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import model.Administrador;
 
 import java.io.IOException;
 
 import excepciones.EstacionNoEncontradaException;
 
 public class ControladorConectar {
-	
-	Administrador admin = new Administrador();
 	
 	@FXML
 	private TextField firstTF;
@@ -47,11 +44,9 @@ public class ControladorConectar {
 				distance = Integer.parseInt(distanceTF.getText());
 			}
 			
-			if(true) {
+			if(ControladorPrincipal_1.admin.añadirConexion(first, last, distance) == false) {
 				throw new EstacionNoEncontradaException();
 			}
-			
-			admin.añadirConexion(first, last, distance);
 			
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setHeaderText("Se han conectado correctamente");

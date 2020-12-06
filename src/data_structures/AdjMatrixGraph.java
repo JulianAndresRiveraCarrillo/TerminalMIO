@@ -196,7 +196,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	}
 	
 	public boolean search(T value) {
-		return false;
+		return IndexedVertices.containsValue(value);
 	}
 	
 	public T search(int index) {

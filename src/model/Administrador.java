@@ -38,9 +38,6 @@ public class Administrador {
 	}
 	*/
 	
-<<<<<<< HEAD
-	public void añadirConexion(String estacion1, String estacion2, double distancia) {
-=======
 	public boolean añadirConexion(String estacion1, String estacion2, double distancia) {
 		boolean con = false;
 		Integer i1 = estaciones.get(estacion1);
@@ -53,6 +50,19 @@ public class Administrador {
 			con = true;
 		}
 		return con;
->>>>>>> main
+	}
+	
+	public Estacion buscar(String estacion) {
+		Estacion aux = null;
+		Integer i = estaciones.get(estacion);
+		
+		if (i != null) {
+			Estacion temp = AdjMatEstaciones.search(i);
+			if (temp != null) {
+				aux = temp;
+			}
+		}
+		
+		return aux;
 	}
 }

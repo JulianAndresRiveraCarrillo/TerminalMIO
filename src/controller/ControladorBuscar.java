@@ -6,11 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import excepciones.EstacionNoEncontradaException;
 
 public class ControladorBuscar {
 
@@ -19,9 +23,6 @@ public class ControladorBuscar {
 
     @FXML
     private Label capacityLB;
-
-    @FXML
-    private Label routesLB;
     
     @FXML
     private TextField searchTF;
@@ -29,10 +30,27 @@ public class ControladorBuscar {
     @FXML
     void search(ActionEvent event) {
     	String temp = searchTF.getText();
+    	try {
+    		if (temp.length() != 0 ) {
+    			if (ControladorPrincipal_1.admin.buscar(temp) != null) {
+    				nameLB.setText(ControladorPrincipal_1.admin.buscar(temp).getNombre());
+    				int num = ControladorPrincipal_1.admin.buscar(temp).getCapacidad_de_usuarios();
+    		    	capacityLB.setText(String.valueOf(num));
+    			}else {
+    				throw new EstacionNoEncontradaException();
+    			}
+    		}else {
+    			Alert alert = new Alert(AlertType.ERROR);
+    			alert.setHeaderText("Verifica las entrada");
+    			alert.setContentText("El campo de texto esta vacio");
+    			alert.showAndWait();
+    		}
+		} catch (EstacionNoEncontradaException en) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(en.getMessage());
+			alert.showAndWait();
+		}
     	
-    	nameLB.setText("vacio");
-    	capacityLB.setText("vacio");
-    	routesLB.setText("vacio");
     	
     }
 

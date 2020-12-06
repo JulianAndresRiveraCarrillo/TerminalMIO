@@ -12,8 +12,8 @@ import model.Administrador;
 import java.io.IOException;
 
 public class ControladorPrincipal_1 {
-
-    public static Administrador admin = new Administrador();
+	
+	public static Administrador admin = new Administrador();
 
     @FXML
     public void ventanaMostrarInformacion(ActionEvent actionEvent) throws IOException {

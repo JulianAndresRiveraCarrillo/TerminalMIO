@@ -10,19 +10,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import model.Administrador;
 
 import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 import excepciones.EstacionRepetidaException;
 
 public class ControladorAgregar {
-	
-	private Administrador admin = new Administrador();
-	
-	//===================================================
 
 	//Add GUI
 	@FXML
@@ -47,7 +40,7 @@ public class ControladorAgregar {
 				name = nameTF.getText();
 				capacity = Integer.parseInt(capacityTF.getText());
 				
-			if (admin.añadirEstacion(name, capacity) == false) {
+			if (ControladorPrincipal_1.admin.añadirEstacion(name, capacity) == false) {
 				throw new EstacionRepetidaException();
 			}
 				
