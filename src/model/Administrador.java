@@ -2,7 +2,6 @@ package model;
 
 import java.util.*;
 import data_structures.*;
-import excepciones.EstacionRepetidaException;
 
 public class Administrador {
 	private Map<String, Integer> estaciones;
@@ -64,5 +63,31 @@ public class Administrador {
 		}
 		
 		return aux;
+	}
+	
+	public boolean eliminarConexion(String estacion1, String estacion2) {
+		boolean con = false;
+		Integer i1 = estaciones.get(estacion1);
+		Integer i2 = estaciones.get(estacion2);
+		if(i1!=null && i2!=null) {
+			Estacion e1 = AdjListEstaciones.search(i1);
+			Estacion e2 = AdjListEstaciones.search(i2);
+			AdjListEstaciones.removeEdge(e1, e2);
+			AdjMatEstaciones.removeEdge(e1, e2);
+			con = true;
+		}
+		return con;
+	}
+	
+	public boolean eliminarEstacion(String estacion) {
+		boolean elim = false;
+		Integer i = estaciones.get(estacion);
+		if(i!=null) {
+			Estacion e = AdjListEstaciones.search(i);
+			AdjListEstaciones.removeVertex(e);
+			AdjMatEstaciones.removeVertex(e);
+			elim = true;
+		}
+		return elim;
 	}
 }
