@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import data_structures.AdjListGraph;
 
 class AdjListGraphTest {
-	AdjListGraph<String> alg;
+	private AdjListGraph<String> alg;
 	/** STAGES **/	
 	public void setUpStage1() {
 		alg = new AdjListGraph<String>(false);
@@ -29,21 +29,21 @@ class AdjListGraphTest {
 	
 	/** TESTS **/
 	@Test
-	void addVertexTest1() {
+	public void addVertexTest1() {
 		setUpStage1();
 		alg.addVertex("Pueblo Paleta");
 		assertEquals("Pueblo Paleta", alg.search(0));
 	}
 	
 	@Test
-	void addVertexTest2() {
+	public void addVertexTest2() {
 		setUpStage2();
 		boolean added = alg.addVertex("Pueblo Paleta");
 		assertEquals(false, added);
 	}
 	
 	@Test
-	void addEdgeTest1() {
+	public void addEdgeTest1() {
 		setUpStage2();
 		alg.addEdge("Pueblo Paleta", "Ciudad Verde", 8);
 		alg.addEdge("Ciudad Verde", "Ciudad Plateada", 15);
@@ -52,7 +52,7 @@ class AdjListGraphTest {
 	}
 	
 	@Test
-	void addEdgeTest2() {
+	public void addEdgeTest2() {
 		setUpStage2();
 		alg.addEdge("Pueblo Paleta", "Ciudad Verde", 8);
 		assertTrue(alg.areConnected("Pueblo Paleta", "Ciudad Verde"));
@@ -60,14 +60,14 @@ class AdjListGraphTest {
 	}
 	
 	@Test
-	void removeVertexTest() {
+	public void removeVertexTest() {
 		setUpStage2();
 		alg.removeVertex("Pueblo Paleta");
 		assertFalse(alg.search("Pueblo Paleta"));
 	}
 	
 	@Test
-	void removeEdgeTest() {
+	public void removeEdgeTest() {
 		setUpStage3();
 		alg.removeEdge("Pueblo Paleta", "Ciudad Verde");
 		double [][] wm = alg.weightMatrix();
@@ -77,13 +77,13 @@ class AdjListGraphTest {
 	}
 	
 	@Test
-	void searchTest1() {
+	public void searchTest1() {
 		setUpStage1();
 		assertNull(alg.search(0));
 	}
 	
 	@Test
-	void searchTest2() {
+	public void searchTest2() {
 		setUpStage2();
 		assertEquals("Pueblo Paleta", alg.search(0));
 		assertTrue(alg.search("Ciudad Plateada"));
@@ -91,7 +91,7 @@ class AdjListGraphTest {
 	}
 	
 	@Test
-	void weightMatrixTest() {
+	public void weightMatrixTest() {
 		setUpStage3();
 		double[][] matrix = alg.weightMatrix();
 		assertEquals(8, matrix[0][1]);
@@ -103,14 +103,14 @@ class AdjListGraphTest {
 	}
 	
 	@Test
-	void getIndexVTest() {
+	public void getIndexVTest() {
 		setUpStage2();
 		assertEquals(0, alg.getIndexV("Pueblo Paleta"));
 		assertNotEquals(1, alg.getIndexV("Ciudad Plateada"));
 	}
 	
 	@Test
-	void getVertexTest() {
+	public void getVertexTest() {
 		setUpStage2();
 		assertEquals(3, alg.getVertex());
 		alg.addVertex("Ciudad Celeste");

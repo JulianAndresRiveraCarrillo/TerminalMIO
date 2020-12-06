@@ -14,7 +14,7 @@ import data_structures.IGraph;
 import excepciones.EstacionRepetidaException;
 
 class GraphAlgorithmsAdjMatrixTest {
-	GraphAlgorithms<String> g = new GraphAlgorithms<String>();
+	private GraphAlgorithms<String> g = new GraphAlgorithms<String>();
 	IGraph<String> graph;
 	/** STAGES **/	
 	public void setUpStage1() {
@@ -45,7 +45,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	
 	/** TESTS **/
 	@Test
-	void bfsTest1() {
+	public void bfsTest1() {
 		setUpStage1();
 		List<String> b = g.bfs(graph, "Pueblo Paleta");
 		assertEquals("Pueblo Paleta", b.get(0));
@@ -61,7 +61,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void bfsTest2() {
+	public void bfsTest2() {
 		setUpStage2();
 		List<String> b = g.bfs(graph, "A");
 		assertEquals("A", b.get(0));
@@ -77,7 +77,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void dfsTest1() {
+	public void dfsTest1() {
 		setUpStage1();
 		List<String> d = g.dfs(graph, "Pueblo Paleta");
 		assertEquals("Pueblo Paleta", d.get(0));
@@ -93,7 +93,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void dfsTest2() {
+	public void dfsTest2() {
 		setUpStage2();
 		List<String> d = g.bfs(graph, "A");
 		assertEquals("A", d.get(0));
@@ -109,7 +109,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void dijkstraTest1() {
+	public void dijkstraTest1() {
 		setUpStage1();
 		GraphAlgorithms.dijkstra("Pueblo Paleta", graph, 0);
 		double[] cost = GraphAlgorithms.getCost();
@@ -131,7 +131,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void dijkstraTest2() {
+	public void dijkstraTest2() {
 		setUpStage2();
 		GraphAlgorithms.dijkstra("A", graph, 0);
 		double[] cost = GraphAlgorithms.getCost();
@@ -153,7 +153,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void primTest1() {
+	public void primTest1() {
 		setUpStage1();
 		assertEquals(19, GraphAlgorithms.prim("Pueblo Paleta", graph));
 		assertEquals(13, GraphAlgorithms.prim("Ciudad Verde", graph));
@@ -162,7 +162,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void primTest2() {
+	public void primTest2() {
 		setUpStage2();
 		assertEquals(10, GraphAlgorithms.prim("A", graph));
 		assertEquals(7, GraphAlgorithms.prim("B", graph));
@@ -171,7 +171,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void floydTest() {
+	public void floydTest() {
 		setUpStage2();
 		double[][] m = GraphAlgorithms.floydWarshall(graph);
 		assertEquals(8, m[1][0]);
@@ -189,7 +189,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void kruskalTest1() {
+	public void kruskalTest1() {
 		setUpStage1();
 		ArrayList<Edge<String>> a = GraphAlgorithms.kruskal(graph);
 		double totalW = 0;
@@ -215,7 +215,7 @@ class GraphAlgorithmsAdjMatrixTest {
 	}
 	
 	@Test
-	void kruskalTest2() {
+	public void kruskalTest2() {
 		setUpStage2();
 		ArrayList<Edge<String>> a = GraphAlgorithms.kruskal(graph);
 		double totalW = 0;
