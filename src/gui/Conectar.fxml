@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -60,7 +61,13 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#connect" text="Conectar">
+            <Button mnemonicParsing="false" onAction="#connect" prefHeight="23.0" prefWidth="82.0" text="Conectar">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Pane prefHeight="78.0" prefWidth="11.0" />
+            <Button layoutX="218.0" layoutY="38.0" mnemonicParsing="false" onAction="#disconnect" text="Desconectar">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>

@@ -63,6 +63,13 @@ public class ControladorConectar {
 			alert.showAndWait();
 		}
 	}
+	
+	@FXML
+    void disconnect(ActionEvent event) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("Se ha eliminado la estacion correctamente");
+		alert.showAndWait();
+	}
 
     @FXML
     public void mostrarVentanaPrincipal(ActionEvent actionEvent) throws IOException {
