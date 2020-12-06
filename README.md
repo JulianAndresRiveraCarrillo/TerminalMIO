@@ -9,4 +9,6 @@ TerminalMIO is made to determine the shortest routes between existing stations a
 - David Kim Jhun<br>
 - Miguel Andres Sarasti <br>
 ## Analysis and Design
-The documentation and design can be found here: [***Documentation***](docs) <br> <br>
+The documentation and design can be found here: [***Documentation***](docs) <br>
+## Video
+The video explanation of the project can be found here: https://youtu.be/RdKwQoIy5a8 <br>
