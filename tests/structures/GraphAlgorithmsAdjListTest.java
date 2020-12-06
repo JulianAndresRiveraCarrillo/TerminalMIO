@@ -10,6 +10,7 @@ import data_structures.AdjListGraph;
 import data_structures.Edge;
 import data_structures.GraphAlgorithms;
 import data_structures.IGraph;
+import excepciones.EstacionRepetidaException;
 
 class GraphAlgorithmsAdjListTest {
 	GraphAlgorithms<String> g = new GraphAlgorithms<String>();
@@ -38,6 +39,7 @@ class GraphAlgorithmsAdjListTest {
 		graph.addEdge("A", "D", 3);
 		graph.addEdge("B", "D", 6);
 		graph.addEdge("C", "D", 1);
+		
 	}
 	
 	/** TESTS **/

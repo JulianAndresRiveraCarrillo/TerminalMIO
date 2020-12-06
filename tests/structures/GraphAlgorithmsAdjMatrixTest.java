@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import data_structures.AdjMatrixGraph;
 import data_structures.GraphAlgorithms;
 import data_structures.IGraph;
+import excepciones.EstacionRepetidaException;
 
 class GraphAlgorithmsAdjMatrixTest {
 	GraphAlgorithms<String> g = new GraphAlgorithms<String>();
@@ -24,6 +25,7 @@ class GraphAlgorithmsAdjMatrixTest {
 		graph.addEdge("Ciudad Verde", "Ciudad Plateada", 15);
 		graph.addEdge("Pueblo Paleta", "Ciudad Celeste", 5);
 		graph.addEdge("Ciudad Celeste", "Ciudad Plateada", 6);
+		
 	}
 	
 	public void setUpStage2() {

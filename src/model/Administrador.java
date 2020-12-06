@@ -2,6 +2,7 @@ package model;
 
 import java.util.*;
 import data_structures.*;
+import excepciones.EstacionRepetidaException;
 
 public class Administrador {
 	private ArrayList<Estacion> estaciones;
@@ -14,11 +15,17 @@ public class Administrador {
 		AdjMatEstaciones = new AdjMatrixGraph<Estacion>(false);
 	}
 	
-	public void añadirEstacion(String n, int cap) {
+	public boolean añadirEstacion(String n, int cap) {
+		boolean aux = false;
 		Estacion temp = new Estacion(n, cap);
 		estaciones.add(temp);
-		AdjListEstaciones.addVertex(temp);
-		AdjMatEstaciones.addVertex(temp);
+		if (AdjListEstaciones.addVertex(temp)) {
+			aux = true;
+		}
+		if (AdjMatEstaciones.addVertex(temp)) {
+			aux = true;
+		}
+		return aux;
 	}
 	/*
 	public void añadirEstacion(String n, int cap, String r) {

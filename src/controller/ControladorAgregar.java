@@ -16,6 +16,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import excepciones.EstacionRepetidaException;
+
 public class ControladorAgregar {
 	
 	private Administrador admin = new Administrador();
@@ -45,7 +47,9 @@ public class ControladorAgregar {
 				name = nameTF.getText();
 				capacity = Integer.parseInt(capacityTF.getText());
 				
-				admin.añadirEstacion(name, capacity);
+			if (admin.añadirEstacion(name, capacity) == false) {
+				throw new EstacionRepetidaException();
+			}
 				
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setHeaderText("Se ha agregado correctamente");
@@ -57,6 +61,10 @@ public class ControladorAgregar {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Verifica la Capacidad");
 			alert.setContentText("Solo se permiten numeros enteros en el campo de texto");
+			alert.showAndWait();
+		} catch (EstacionRepetidaException ere) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(ere.getMessage());
 			alert.showAndWait();
 		}
 		

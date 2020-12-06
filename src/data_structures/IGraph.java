@@ -2,8 +2,10 @@ package data_structures;
 
 import java.util.List;
 
+import excepciones.EstacionRepetidaException;
+
 public interface IGraph<T> {
-	public boolean addVertex(T u);
+	public boolean  addVertex(T u);
 	
 	public void addEdge(T u, T v);
 	

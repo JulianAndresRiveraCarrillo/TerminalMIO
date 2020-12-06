@@ -2,8 +2,8 @@ package structures;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
 import data_structures.AdjMatrixGraph;
+
 
 class AdjMatrixGraphTest {
 	AdjMatrixGraph<String> amg;
@@ -17,18 +17,19 @@ class AdjMatrixGraphTest {
 		amg.addVertex("Pueblo Paleta");
 		amg.addVertex("Ciudad Verde");
 		amg.addVertex("Ciudad Plateada");
+		
 	}
 	
 	public void setUpStage3() {
 		amg = new AdjMatrixGraph<String>(false);
+		amg.addVertex("Ciudad Plateada");
 		amg.addVertex("Pueblo Paleta");
 		amg.addVertex("Ciudad Verde");
-		amg.addVertex("Ciudad Plateada");
 		amg.addEdge("Pueblo Paleta", "Ciudad Verde", 8);
 		amg.addEdge("Ciudad Verde", "Ciudad Plateada", 15);
+		
 	}
 	
-	/** TESTS **/
 	@Test
 	void addVertexTest1() {
 		setUpStage1();
