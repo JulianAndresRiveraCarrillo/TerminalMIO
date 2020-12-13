@@ -35,7 +35,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	@Override
 	public boolean addVertex(T u) {
 		int index;
-		boolean added = false;
+		//boolean added = false;
 		if(VerticesIndex.get(u)==null) {
 			if(freePositions.isEmpty()) {
 				if(size==adjMatrix.length) {

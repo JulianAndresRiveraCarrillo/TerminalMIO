@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import excepciones.EstacionNoEncontradaException;
+
 public class ControladorRutas {
 
 	@FXML
@@ -25,11 +27,30 @@ public class ControladorRutas {
     void route(ActionEvent event) {
     	String departure = departureTF.getText();
     	String arrival = arrivalTF.getText();
-    	
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setHeaderText("la ruta es:");
-    	alert.setContentText("Ruta 1" + "\n" + "Ruta 2" + "\n"  + "Ruta 3");
-    	alert.showAndWait();
+    	try {
+    		if(departure.length()!=0 && arrival.length()!=0) {
+    			if (ControladorPrincipal_1.admin.buscar(departure) != null && ControladorPrincipal_1.admin.buscar(arrival) != null) {
+    				String message = ControladorPrincipal_1.admin.rutaEntreDosEstaciones(departure, arrival);
+    				if(message != null) {
+	    				Alert alert = new Alert(AlertType.CONFIRMATION);
+	    		    	alert.setHeaderText("la ruta encontrada es:");
+	    		    	alert.setContentText(message);
+	    		    	alert.showAndWait();
+    				}
+    			}else {
+    				throw new EstacionNoEncontradaException();
+    			}
+    		}else {
+    			Alert alert = new Alert(AlertType.ERROR);
+    			alert.setHeaderText("Verifica las entrada");
+    			alert.setContentText("El campo de texto esta vacio");
+    			alert.showAndWait();
+    		}
+    	}catch(EstacionNoEncontradaException en) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(en.getMessage());
+			alert.showAndWait();
+    	}
     }
     
     @FXML

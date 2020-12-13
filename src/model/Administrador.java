@@ -7,6 +7,7 @@ public class Administrador {
 	private Map<String, Integer> estaciones;
 	private AdjListGraph<Estacion> AdjListEstaciones;
 	private AdjMatrixGraph<Estacion> AdjMatEstaciones;
+	private GraphAlgorithms<Estacion> alg;
 	
 	public Administrador() {
 		estaciones = new HashMap<>();
@@ -89,5 +90,17 @@ public class Administrador {
 			elim = true;
 		}
 		return elim;
+	}
+	
+	public String rutaEntreDosEstaciones(String estacion1, String estacion2) {
+		String route = null;
+		Integer i1 = estaciones.get(estacion1);
+		Integer i2 = estaciones.get(estacion2);
+		if(i1!=null && i2!=null) {
+			Estacion e1 = AdjListEstaciones.search(i1);
+			Estacion e2 = AdjListEstaciones.search(i2);
+			route = "Ruta: " + "KO\n" + "Distancia: " + alg.dijkstra(AdjListEstaciones, e1, e2);
+		}
+		return route;
 	}
 }

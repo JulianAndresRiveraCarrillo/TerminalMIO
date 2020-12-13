@@ -3,12 +3,23 @@ package data_structures;
 import java.util.*;
 
 public class GraphAlgorithms<T> {
+	private double[] dist;
+	private Integer[] prev;
 	
 	private static double[] cost;
 	private static boolean[] F;
 	private static int[] path;
 	public static List<Integer> choice;
 
+	public static class Node{
+		int id;
+		double value;
+
+		public Node(int id, double value) {
+			this.id = id;
+			this.value = value;
+		}
+	}
 	
 	public List<T> bfs(IGraph<T> graph, T source){
 		List<T> bfs = new ArrayList<>();
@@ -98,6 +109,52 @@ public class GraphAlgorithms<T> {
 				}
 			}
 		}
+	}
+	
+	public double dijkstra(IGraph<T> g, T origin, T termination) {
+		int start = g.getIndexV(origin);
+		int end = g.getIndexV(termination);
+		int n = g.getVertex();
+
+		dist = new double[n];
+		Arrays.fill(dist, Double.POSITIVE_INFINITY);
+		dist[start] = 0;
+
+		PriorityQueue<Node> pq = new PriorityQueue<>(2 * n, new Comparator<Node>() {
+			@Override
+			public int compare(Node node1, Node node2) {
+				if (Math.abs(node1.value - node2.value) < (1e-6)) 
+					return 0;
+				return (node1.value - node2.value) > 0 ? +1 : -1;
+			}});
+		pq.offer(new Node(start, 0));
+
+		boolean[] visited = new boolean[n];
+		prev = new Integer[n];
+
+		while (!pq.isEmpty()) {
+			Node node = pq.poll();
+			visited[node.id] = true;
+
+			if (dist[node.id] < node.value) continue;
+
+			List<Edge<T>> edges = g.getEdges();
+			
+			for (int i = 0; i < edges.size(); i++) {
+				
+				Edge<T> edge = edges.get(i);
+				if (visited[g.getIndexV(edge.getEnd())]) continue;
+
+				double newDist = dist[g.getIndexV(edge.getSource())] + edge.getWeight();
+				if (newDist < dist[g.getIndexV(edge.getEnd())]) {
+					prev[g.getIndexV(edge.getEnd())] = g.getIndexV(edge.getSource());
+					dist[g.getIndexV(edge.getEnd())] = newDist;
+					pq.offer(new Node(g.getIndexV(edge.getEnd()), dist[g.getIndexV(edge.getEnd())]));
+				}
+			}
+			if (node.id == end) return dist[end];
+		}
+		return Double.POSITIVE_INFINITY;
 	}
 	
 	private static int minimum(int n) {
@@ -232,5 +289,9 @@ public class GraphAlgorithms<T> {
 
 	public static List<Integer> getChoice() {
 		return choice;
+	}
+	
+	public double[] getDistance() {
+		return dist;
 	}
 }
