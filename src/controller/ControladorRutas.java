@@ -27,6 +27,7 @@ public class ControladorRutas {
     void route(ActionEvent event) {
     	String departure = departureTF.getText();
     	String arrival = arrivalTF.getText();
+    	
     	try {
     		if(departure.length()!=0 && arrival.length()!=0) {
     			if (ControladorPrincipal_1.admin.buscar(departure) != null && ControladorPrincipal_1.admin.buscar(arrival) != null) {

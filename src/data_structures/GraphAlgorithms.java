@@ -3,8 +3,8 @@ package data_structures;
 import java.util.*;
 
 public class GraphAlgorithms<T> {
-	private double[] dist;
-	private Integer[] prev;
+	private static double[] dist;
+	private static Integer[] prev;
 	
 	private static double[] cost;
 	private static boolean[] F;
@@ -73,7 +73,7 @@ public class GraphAlgorithms<T> {
 		return dfs;
 	}
 	
-	public static <T> void dijkstra(T origin, IGraph<T> g, int c) {
+	/*public static <T> void dijkstra(T origin, IGraph<T> g, int c) {
 		double[][] weights = g.weightMatrix(); 
 		
 		int index = g.getIndexV(origin); 
@@ -110,8 +110,8 @@ public class GraphAlgorithms<T> {
 			}
 		}
 	}
-	
-	public double dijkstra(IGraph<T> g, T origin, T termination) {
+	*/
+	public static <T> double dijkstra(IGraph<T> g, T origin, T termination) {
 		int start = g.getIndexV(origin);
 		int end = g.getIndexV(termination);
 		int n = g.getVertex();
@@ -128,6 +128,7 @@ public class GraphAlgorithms<T> {
 				return (node1.value - node2.value) > 0 ? +1 : -1;
 			}});
 		pq.offer(new Node(start, 0));
+		
 
 		boolean[] visited = new boolean[n];
 		prev = new Integer[n];
@@ -145,7 +146,8 @@ public class GraphAlgorithms<T> {
 				Edge<T> edge = edges.get(i);
 				if (visited[g.getIndexV(edge.getEnd())]) continue;
 
-				double newDist = dist[g.getIndexV(edge.getSource())] + edge.getWeight();
+				double newDist = dist[g.getIndexV(edge.getSource())] + 1;
+				//double newDist = dist[g.getIndexV(edge.getSource())] + edge.getWeight();
 				if (newDist < dist[g.getIndexV(edge.getEnd())]) {
 					prev[g.getIndexV(edge.getEnd())] = g.getIndexV(edge.getSource());
 					dist[g.getIndexV(edge.getEnd())] = newDist;
@@ -156,7 +158,7 @@ public class GraphAlgorithms<T> {
 		}
 		return Double.POSITIVE_INFINITY;
 	}
-	
+	/*
 	private static int minimum(int n) {
 		double max = Integer.MAX_VALUE;
 		int v = 1;
@@ -167,7 +169,7 @@ public class GraphAlgorithms<T> {
 			}
 		}
 		return v;
-	}
+	}*/
 
 	public static <T> double[][] floydWarshall(IGraph<T> graph){
 		double[][] matrix = graph.weightMatrix();

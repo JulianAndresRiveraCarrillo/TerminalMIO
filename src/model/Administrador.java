@@ -99,7 +99,7 @@ public class Administrador {
 		if(i1!=null && i2!=null) {
 			Estacion e1 = AdjListEstaciones.search(i1);
 			Estacion e2 = AdjListEstaciones.search(i2);
-			route = "Ruta: " + "KO\n" + "Distancia: " + alg.dijkstra(AdjListEstaciones, e1, e2);
+			route = "Ruta: " + "KO\n" + "Distancia: " + alg.dijkstra(AdjListEstaciones, e1, e2); 
 		}
 		return route;
 	}
