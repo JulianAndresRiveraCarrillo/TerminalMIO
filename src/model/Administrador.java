@@ -104,9 +104,8 @@ public class Administrador {
 			
 			for (int i = 0; i < list.size(); i++) {
 				Estacion temp = AdjListEstaciones.search(list.get(i));
-				route += temp.getNombre() + "\n";
+				route += temp.getNombre().toUpperCase() + "\n";
 			}
-			
 		}
 		return route;
 	}
@@ -121,7 +120,7 @@ public class Administrador {
 
 			for (int j = 0; j < list.size(); j++) {
 				Estacion temp = AdjListEstaciones.search(list.get(j));
-				route += temp.getNombre() + "\n";
+				route += temp.getNombre().toUpperCase() + "\n";
 			}
 			
 		}

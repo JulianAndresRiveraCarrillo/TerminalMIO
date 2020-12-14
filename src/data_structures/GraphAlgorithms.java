@@ -74,7 +74,7 @@ public class GraphAlgorithms<T> {
 	}
 	
 	/*
-	public static <T> double dijkstra(IGraph<T> g, T origin, T termination) {
+	public static <T> double dijkstra0(IGraph<T> g, T origin, T termination) {
 		int start = g.getIndexV(origin);
 		int end = g.getIndexV(termination);
 		int n = g.getVertex();
@@ -109,8 +109,8 @@ public class GraphAlgorithms<T> {
 				Edge<T> edge = edges.get(i);
 				if (visited[g.getIndexV(edge.getEnd())]) continue;
 
-				double newDist = dist[g.getIndexV(edge.getSource())] + 1;
-				//double newDist = dist[g.getIndexV(edge.getSource())] + edge.getWeight();
+				//double newDist = dist[g.getIndexV(edge.getSource())] + 1;
+				double newDist = dist[g.getIndexV(edge.getSource())] + edge.getWeight();
 				if (newDist < dist[g.getIndexV(edge.getEnd())]) {
 					prev[g.getIndexV(edge.getEnd())] = g.getIndexV(edge.getSource());
 					dist[g.getIndexV(edge.getEnd())] = newDist;
@@ -121,8 +121,8 @@ public class GraphAlgorithms<T> {
 		}
 		return Double.POSITIVE_INFINITY;
 	}
-*/
 
+*/
 	public static <T> ArrayList<Integer> dijkstra(IGraph<T> g, T origin) {
 		int start = g.getIndexV(origin);
 		int n = g.getVertex();
@@ -229,7 +229,7 @@ public class GraphAlgorithms<T> {
 			}
 			if (node.id == end) {
 				ArrayList<Integer> aux = modifyArray(end, list);
-				list.clear();
+				list.removeAll(list);
 				list.addAll(aux);
 			}
 			j++;
@@ -375,7 +375,7 @@ public class GraphAlgorithms<T> {
 		return choice;
 	}
 	
-	public double[] getDistance() {
+	public static double[] getDistance() {
 		return dist;
 	}
 }
