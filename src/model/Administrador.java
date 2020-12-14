@@ -93,17 +93,17 @@ public class Administrador {
 	}
 	
 	public String rutaEntreDosEstaciones(String estacion1, String estacion2) {
-		String route = "RUTAS:" + "\n";
+		String route = "ESTACIONES:" + "\n";
 		Integer i1 = estaciones.get(estacion1);
 		Integer i2 = estaciones.get(estacion2);
 		if(i1!=null && i2!=null) {
 			Estacion e1 = AdjListEstaciones.search(i1);
 			Estacion e2 = AdjListEstaciones.search(i2);
 			
-			int[] array = GraphAlgorithms.dijkstra(AdjListEstaciones, e1, e2);
+			ArrayList<Integer> list = GraphAlgorithms.dijkstra2(AdjListEstaciones, e1, e2);
 			
-			for (int i = 0; i < array.length; i++) {
-				Estacion temp = AdjListEstaciones.search(array[i]);
+			for (int i = 0; i < list.size(); i++) {
+				Estacion temp = AdjListEstaciones.search(list.get(i));
 				route += temp.getNombre() + "\n";
 			}
 			
@@ -112,11 +112,18 @@ public class Administrador {
 	}
 	
 	public String rutaCompleta(String estacion) {
-		String route = null;
+		String route = "ESTACIONES:" + "\n";
 		Integer i = estaciones.get(estacion);
 		if(i!=null) {
 			Estacion e = AdjListEstaciones.search(i);
-			route = "Ruta: " + GraphAlgorithms.prim(e, AdjMatEstaciones);
+
+			ArrayList<Integer> list = GraphAlgorithms.dijkstra(AdjListEstaciones, e);
+
+			for (int j = 0; j < list.size(); j++) {
+				Estacion temp = AdjListEstaciones.search(list.get(j));
+				route += temp.getNombre() + "\n";
+			}
+			
 		}
 		return route;
 	}
