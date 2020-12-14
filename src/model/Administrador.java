@@ -92,14 +92,22 @@ public class Administrador {
 		return elim;
 	}
 	
+	@SuppressWarnings("static-access")
 	public String rutaEntreDosEstaciones(String estacion1, String estacion2) {
-		String route = null;
+		String route = "RUTAS:" + "\n";
 		Integer i1 = estaciones.get(estacion1);
 		Integer i2 = estaciones.get(estacion2);
 		if(i1!=null && i2!=null) {
 			Estacion e1 = AdjListEstaciones.search(i1);
 			Estacion e2 = AdjListEstaciones.search(i2);
-			route = "Ruta: " + "KO\n" + "Distancia: " + alg.dijkstra(AdjListEstaciones, e1, e2); 
+			
+			int[] array = alg.dijkstra(AdjListEstaciones, e1, e2);
+			
+			for (int i = 0; i < array.length; i++) {
+				Estacion temp = AdjListEstaciones.search(array[i]);
+				route += temp.getNombre() + "\n";
+			}
+			
 		}
 		return route;
 	}

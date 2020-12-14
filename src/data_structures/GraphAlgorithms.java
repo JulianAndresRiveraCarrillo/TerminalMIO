@@ -110,7 +110,7 @@ public class GraphAlgorithms<T> {
 			}
 		}
 	}
-	*/
+	
 	public static <T> double dijkstra(IGraph<T> g, T origin, T termination) {
 		int start = g.getIndexV(origin);
 		int end = g.getIndexV(termination);
@@ -158,7 +158,7 @@ public class GraphAlgorithms<T> {
 		}
 		return Double.POSITIVE_INFINITY;
 	}
-	/*
+	
 	private static int minimum(int n) {
 		double max = Integer.MAX_VALUE;
 		int v = 1;
@@ -171,6 +171,61 @@ public class GraphAlgorithms<T> {
 		return v;
 	}*/
 
+	public static <T> int[] dijkstra(IGraph<T> g, T origin, T termination) {
+		int start = g.getIndexV(origin);
+		int end = g.getIndexV(termination);
+		int n = g.getVertex();
+		
+		
+		int[] array = new int[n];
+		
+		dist = new double[n];
+		Arrays.fill(dist, Double.POSITIVE_INFINITY);
+		dist[start] = 0;
+
+		PriorityQueue<Node> pq = new PriorityQueue<>(2 * n, new Comparator<Node>() {
+			@Override
+			public int compare(Node node1, Node node2) {
+				if (Math.abs(node1.value - node2.value) < (1e-6)) 
+					return 0;
+				return (node1.value - node2.value) > 0 ? +1 : -1;
+			}});
+		pq.offer(new Node(start, 0));
+		
+
+		boolean[] visited = new boolean[n];
+		prev = new Integer[n];
+		
+		int j = 0;
+		while (!pq.isEmpty()) {
+			Node node = pq.poll();
+			
+			array[j] = node.id;
+			
+			visited[node.id] = true;
+
+			if (dist[node.id] < node.value) continue;
+
+			List<Edge<T>> edges = g.getEdges();
+			
+			for (int i = 0; i < edges.size(); i++) {
+				
+				Edge<T> edge = edges.get(i);
+				if (visited[g.getIndexV(edge.getEnd())]) continue;
+
+				double newDist = dist[g.getIndexV(edge.getSource())] + 1;
+				//double newDist = dist[g.getIndexV(edge.getSource())] + edge.getWeight();
+				if (newDist < dist[g.getIndexV(edge.getEnd())]) {
+					prev[g.getIndexV(edge.getEnd())] = g.getIndexV(edge.getSource());
+					dist[g.getIndexV(edge.getEnd())] = newDist;
+					pq.offer(new Node(g.getIndexV(edge.getEnd()), dist[g.getIndexV(edge.getEnd())]));
+				}
+			}
+			//if (node.id == end) return dist[end];
+			j++;
+		}
+		return array;
+	}
 	public static <T> double[][] floydWarshall(IGraph<T> graph){
 		double[][] matrix = graph.weightMatrix();
 		int size = graph.getVertex();
