@@ -57,11 +57,30 @@ public class ControladorRutas {
     @FXML
     void routeComplete(ActionEvent event) {
     	String departure = departureTF.getText();
-    	
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setHeaderText("la ruta es:");
-    	alert.setContentText("Ruta 1" + "\n" + "Ruta 2" + "\n"  + "Ruta 3");
-    	alert.showAndWait();
+    	try {
+    		if(departure.length()!=0) {
+    			if (ControladorPrincipal_1.admin.buscar(departure) != null) {
+    				String message = ControladorPrincipal_1.admin.rutaCompleta(departure);
+    				if(message != null) {
+	    				Alert alert = new Alert(AlertType.CONFIRMATION);
+	    		    	alert.setHeaderText("las rutas encontradas son:");
+	    		    	alert.setContentText(message);
+	    		    	alert.showAndWait();
+    				}
+    			}else {
+    				throw new EstacionNoEncontradaException();
+    			}
+    		}else {
+    			Alert alert = new Alert(AlertType.ERROR);
+    			alert.setHeaderText("Verifica las entrada");
+    			alert.setContentText("El campo de texto esta vacio");
+    			alert.showAndWait();
+    		}
+    	}catch(EstacionNoEncontradaException en) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(en.getMessage());
+			alert.showAndWait();
+    	}
     }
 
 	@FXML
