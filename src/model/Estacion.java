@@ -1,7 +1,9 @@
 package model;
 
-public class Estacion {
+import java.io.Serializable;
 
+public class Estacion implements Serializable{
+	private static final long serialVersionUID = 1L;
     private String nombre;
     private int capacidad_de_usuarios;
     //private String rutas;

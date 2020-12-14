@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.*;
 import data_structures.*;
 
-public class Administrador {
+public class Administrador implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Map<String, Integer> estaciones;
 	private AdjListGraph<Estacion> AdjListEstaciones;
 	private AdjMatrixGraph<Estacion> AdjMatEstaciones;

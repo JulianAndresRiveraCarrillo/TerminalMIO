@@ -1,8 +1,10 @@
 package data_structures;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class AdjListGraph<T> implements IGraph<T> {
+public class AdjListGraph<T> implements IGraph<T>, Serializable {
+	private static final long serialVersionUID = 1L;
 	private static final int DEF_CAP = 20;
 	private boolean isDirected;
 	private Map<T, Integer> VerticesIndex;

@@ -10,7 +10,6 @@ import data_structures.AdjListGraph;
 import data_structures.Edge;
 import data_structures.GraphAlgorithms;
 import data_structures.IGraph;
-import excepciones.EstacionRepetidaException;
 
 class GraphAlgorithmsAdjListTest {
 	private GraphAlgorithms<String> g = new GraphAlgorithms<String>();
@@ -151,6 +150,72 @@ class GraphAlgorithmsAdjListTest {
 		assertEquals(3, GraphAlgorithms.getPath()[2]);
 	}
 	*/
+	@Test
+	public void dijkstraTest1() {
+		setUpStage1();
+		ArrayList<Integer> a = GraphAlgorithms.dijkstra(graph, "Pueblo Paleta");
+		
+		assertEquals(graph.getIndexV("Pueblo Paleta"), a.get(0));
+		assertEquals(graph.getIndexV("Ciudad Verde"), a.get(1));
+		assertEquals(graph.getIndexV("Ciudad Celeste"), a.get(2));
+		assertEquals(graph.getIndexV("Ciudad Plateada"), a.get(3));
+		
+		a = GraphAlgorithms.dijkstra(graph, "Ciudad Verde");
+		
+		assertEquals(graph.getIndexV("Ciudad Verde"), a.get(0));
+		assertEquals(graph.getIndexV("Pueblo Paleta"), a.get(1));
+		assertEquals(graph.getIndexV("Ciudad Plateada"), a.get(2));
+		assertEquals(graph.getIndexV("Ciudad Celeste"), a.get(3));
+		
+		a = GraphAlgorithms.dijkstra(graph, "Ciudad Plateada");
+		
+		assertEquals(graph.getIndexV("Ciudad Plateada"), a.get(0));
+		assertEquals(graph.getIndexV("Ciudad Verde"), a.get(1));
+		assertEquals(graph.getIndexV("Ciudad Celeste"), a.get(2));
+		assertEquals(graph.getIndexV("Pueblo Paleta"), a.get(3));
+		
+		a = GraphAlgorithms.dijkstra(graph, "Ciudad Celeste");
+		
+		assertEquals(graph.getIndexV("Ciudad Celeste"), a.get(0));
+		assertEquals(graph.getIndexV("Pueblo Paleta"), a.get(1));
+		assertEquals(graph.getIndexV("Ciudad Plateada"), a.get(2));
+		assertEquals(graph.getIndexV("Ciudad Verde"), a.get(3));
+		
+	}
+	
+	@Test
+	public void dijkstraTest2() {
+		setUpStage2();
+		ArrayList<Integer> a = GraphAlgorithms.dijkstra(graph, "A");
+		
+		assertEquals(graph.getIndexV("A"), a.get(0));
+		assertEquals(graph.getIndexV("B"), a.get(1));
+		assertEquals(graph.getIndexV("D"), a.get(2));
+		assertEquals(graph.getIndexV("C"), a.get(3));
+		
+		a = GraphAlgorithms.dijkstra(graph, "B");
+		
+		assertEquals(graph.getIndexV("B"), a.get(0));
+		assertEquals(graph.getIndexV("A"), a.get(1));
+		assertEquals(graph.getIndexV("D"), a.get(2));
+		assertEquals(graph.getIndexV("C"), a.get(3));
+		
+		a = GraphAlgorithms.dijkstra(graph, "C");
+		
+		assertEquals(graph.getIndexV("C"), a.get(0));
+		assertEquals(graph.getIndexV("A"), a.get(1));
+		assertEquals(graph.getIndexV("D"), a.get(2));
+		assertEquals(graph.getIndexV("B"), a.get(3));
+		
+		a = GraphAlgorithms.dijkstra(graph, "D");
+		
+		assertEquals(graph.getIndexV("D"), a.get(0));
+		assertEquals(graph.getIndexV("A"), a.get(1));
+		assertEquals(graph.getIndexV("C"), a.get(2));
+		assertEquals(graph.getIndexV("B"), a.get(3));
+		
+	}
+	
 	@Test
 	public void primTest1() {
 		setUpStage1();

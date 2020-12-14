@@ -9,12 +9,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Administrador;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class ControladorPrincipal_1 {
 	
 	public static Administrador admin = new Administrador();
-
+	
+	@FXML
+	public void initialize() throws Exception {
+		loadData();
+	}
+	
     @FXML
     public void ventanaMostrarInformacion(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/informacion.fxml"));
@@ -75,4 +84,26 @@ public class ControladorPrincipal_1 {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void loadData() {
+    	try {
+			FileInputStream file = new FileInputStream("data\\admin.dat");
+			ObjectInputStream ois = new ObjectInputStream(file);
+			admin = (Administrador) ois.readObject();
+			ois.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+    
+    public void saveData() {
+		try {
+			FileOutputStream file = new FileOutputStream("data\\admin.dat");
+			ObjectOutputStream oos = new ObjectOutputStream(file);
+			oos.writeObject(admin);
+			oos.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

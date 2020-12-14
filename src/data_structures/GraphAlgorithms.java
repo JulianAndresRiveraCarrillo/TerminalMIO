@@ -123,6 +123,7 @@ public class GraphAlgorithms<T> {
 	}
 
 */
+	@SuppressWarnings("unused")
 	public static <T> ArrayList<Integer> dijkstra(IGraph<T> g, T origin) {
 		int start = g.getIndexV(origin);
 		int n = g.getVertex();
@@ -177,6 +178,7 @@ public class GraphAlgorithms<T> {
 		return list;
 	}
 	
+	@SuppressWarnings("unused")
 	public static <T> ArrayList<Integer> dijkstra2(IGraph<T> g, T origin, T termination) {
 		int start = g.getIndexV(origin);
 		int end = g.getIndexV(termination);
