@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorInformacion">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorInformacion">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -40,12 +40,12 @@
                   <Font name="Times New Roman Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="60.0" layoutY="291.0" text="Desde el Menu superior en &quot;OPCIONES&quot; podras acceder">
+            <Label layoutX="75.0" layoutY="292.0" text="Desde la ventana principal podras acceder a cada una ">
                <font>
                   <Font name="Times New Roman Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="100.0" layoutY="308.0" text="a las funcionalidades diseñadas para M.I.O">
+            <Label layoutX="116.0" layoutY="315.0" text="de las funcionalidades diseñadas para M.I.O">
                <font>
                   <Font name="Times New Roman Bold Italic" size="20.0" />
                </font>

@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.Administrador;
 
@@ -83,6 +85,15 @@ public class ControladorPrincipal_1 {
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+    
+    @FXML
+    public void guardarInformacion(ActionEvent actionEvent) {
+    	saveData();
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("Se ha guardado correctamente los registros");
+		alert.showAndWait();
     }
     
     public void loadData() {
