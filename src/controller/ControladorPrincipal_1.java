@@ -21,11 +21,6 @@ public class ControladorPrincipal_1 {
 	
 	public static Administrador admin = new Administrador();
 	
-	@FXML
-	public void initialize() throws Exception {
-		loadData();
-	}
-	
     @FXML
     public void ventanaMostrarInformacion(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/informacion.fxml"));
@@ -96,7 +91,7 @@ public class ControladorPrincipal_1 {
 		alert.showAndWait();
     }
     
-    public void loadData() {
+    public static void loadData() {
     	try {
 			FileInputStream file = new FileInputStream("data\\admin.dat");
 			ObjectInputStream ois = new ObjectInputStream(file);
